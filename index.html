@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vintrzy Store | Spesial Berkah Ramadhan</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Config & Custom CSS -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0B1120',
+                            card: '#1E293B',
+                            green: '#10B981',
+                            gold: '#F59E0B'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 10px #10B981, 0 0 20px #10B981' },
+                            '100%': { boxShadow: '0 0 20px #10B981, 0 0 30px #10B981' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0B1120;
+            color: #F8FAFC;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(160, 100%, 20%, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, hsla(40, 100%, 30%, 0.1) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0B1120; }
+        ::-webkit-scrollbar-thumb { background: #10B981; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #059669; }
+
+        /* Scrollbar khusus untuk list komentar */
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-down {
+            animation: fadeInDown 0.4s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col relative overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-panel transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-2 cursor-pointer">
+                    <i data-lucide="moon-star" class="text-brand-green h-8 w-8"></i>
+                    <span class="text-2xl font-extrabold tracking-tight text-white">Vintrzy<span class="text-brand-green">Store</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#" class="text-brand-green font-semibold px-3 py-2 rounded-md transition hover:bg-white/5">Beranda</a>
+                        <a href="#katalog" class="text-gray-300 hover:text-white px-3 py-2 rounded-md font-medium transition hover:bg-white/5">Katalog Diskon</a>
+                        <a href="#invite" class="text-brand-gold hover:text-yellow-300 px-3 py-2 rounded-md font-bold transition flex items-center gap-1"><i data-lucide="users" class="w-4 h-4"></i> Undang Teman</a>
+                        <a href="#komentar" class="text-gray-300 hover:text-white px-3 py-2 rounded-md font-medium transition hover:bg-white/5 flex items-center gap-1"><i data-lucide="message-square" class="w-4 h-4"></i> Komentar</a>
+                    </div>
+                </div>
+                <!-- Tombol Login Dihapus untuk menyederhanakan akses -->
+                <div class="w-10"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="flex-grow pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex flex-col items-center text-center relative">
+        
+        <!-- Decorative Elements -->
+        <div class="absolute top-20 left-10 text-brand-gold opacity-50 animate-float" style="animation-delay: 0s;">
+            <i data-lucide="star" class="h-12 w-12"></i>
+        </div>
+        <div class="absolute top-40 right-20 text-brand-green opacity-50 animate-float" style="animation-delay: 2s;">
+            <i data-lucide="sparkles" class="h-16 w-16"></i>
+        </div>
+
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel text-brand-gold font-semibold text-sm mb-6 mt-10">
+            <span class="relative flex h-3 w-3">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-gold opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-brand-gold"></span>
+            </span>
+            Event Spesial Ramadhan 1447 H
+        </div>
+
+        <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
+            Klaim Robux & Item <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-green to-emerald-300">Gratis 100%</span>
+        </h1>
+        
+        <p class="mt-4 text-xl text-gray-400 max-w-2xl mb-10">
+            Rayakan bulan suci dengan berbagi. Vintrzy Store memberikan subsidi penuh untuk item favoritmu. Waktu terbatas, klaim sekarang sebelum kehabisan!
+        </p>
+
+        <!-- Countdown Timer -->
+        <div class="glass-panel p-6 rounded-2xl flex flex-wrap justify-center gap-4 sm:gap-8 mb-16 shadow-2xl border border-brand-green/30 relative overflow-hidden">
+            <div class="absolute inset-0 bg-brand-green/5 blur-xl"></div>
+            <div class="relative text-center">
+                <div class="text-4xl md:text-5xl font-bold text-white mb-1" id="days">00</div>
+                <div class="text-xs text-brand-green uppercase tracking-wider font-semibold">Hari</div>
+            </div>
+            <div class="relative text-4xl font-bold text-gray-600">:</div>
+            <div class="relative text-center">
+                <div class="text-4xl md:text-5xl font-bold text-white mb-1" id="hours">00</div>
+                <div class="text-xs text-brand-green uppercase tracking-wider font-semibold">Jam</div>
+            </div>
+            <div class="relative text-4xl font-bold text-gray-600">:</div>
+            <div class="relative text-center">
+                <div class="text-4xl md:text-5xl font-bold text-white mb-1" id="minutes">00</div>
+                <div class="text-xs text-brand-green uppercase tracking-wider font-semibold">Menit</div>
+            </div>
+            <div class="relative text-4xl font-bold text-gray-600">:</div>
+            <div class="relative text-center">
+                <div class="text-4xl md:text-5xl font-bold text-brand-gold mb-1" id="seconds">00</div>
+                <div class="text-xs text-brand-gold uppercase tracking-wider font-semibold">Detik</div>
+            </div>
+        </div>
+
+        <!-- Catalog Section -->
+        <div id="katalog" class="w-full pt-10">
+            <div class="flex items-center justify-between mb-10">
+                <h2 class="text-3xl font-bold text-white flex items-center gap-3">
+                    <i data-lucide="shopping-bag" class="text-brand-green"></i> Flash Sale Rp 0
+                </h2>
+                <div class="text-sm text-gray-400 bg-brand-card px-4 py-2 rounded-full border border-gray-700">
+                    Sisa Kuota: <span class="text-brand-green font-bold">Terbatas</span>
+                </div>
+            </div>
+
+            <!-- Grid Products -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+                
+                <!-- Item 1 -->
+                <div class="bg-brand-card rounded-2xl p-1 border border-gray-800 hover:border-brand-green transition-all duration-300 group hover:-translate-y-2 hover:shadow-[0_10px_30px_-10px_rgba(16,185,129,0.3)] cursor-pointer">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 h-48 rounded-xl flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-md z-10">-100%</div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Roblox_Logo_2022.svg/512px-Roblox_Logo_2022.svg.png" alt="Roblox" class="w-20 opacity-80 group-hover:scale-110 transition duration-500" onerror="this.style.display='none'">
+                        <div class="absolute inset-0 bg-brand-green/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-xs text-brand-gold font-bold mb-1 tracking-wider">ROBUX</p>
+                        <h3 class="text-xl font-bold text-white mb-3">800 Robux</h3>
+                        <div class="flex flex-col mb-5">
+                            <span class="text-sm text-gray-500 line-through">Rp 150.000</span>
+                            <span class="text-3xl font-extrabold text-brand-green">Rp 0</span>
+                        </div>
+                        <button onclick="openModal('800 Robux', 'robux')" class="w-full bg-white/5 hover:bg-brand-green text-white border border-gray-700 hover:border-brand-green font-bold py-3 rounded-xl transition-all duration-300 flex justify-center items-center gap-2 group-hover:animate-glow">
+                            Klaim Sekarang <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="bg-brand-card rounded-2xl p-1 border border-gray-800 hover:border-brand-green transition-all duration-300 group hover:-translate-y-2 hover:shadow-[0_10px_30px_-10px_rgba(16,185,129,0.3)] cursor-pointer">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 h-48 rounded-xl flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-md z-10">-100%</div>
+                        <div class="text-6xl group-hover:scale-110 transition duration-500">💎</div>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-xs text-brand-gold font-bold mb-1 tracking-wider">ROBUX PREMIUM</p>
+                        <h3 class="text-xl font-bold text-white mb-3">2200 Robux</h3>
+                        <div class="flex flex-col mb-5">
+                            <span class="text-sm text-gray-500 line-through">Rp 350.000</span>
+                            <span class="text-3xl font-extrabold text-brand-green">Rp 0</span>
+                        </div>
+                        <button onclick="openModal('2200 Robux', 'robux')" class="w-full bg-white/5 hover:bg-brand-green text-white border border-gray-700 hover:border-brand-green font-bold py-3 rounded-xl transition-all duration-300 flex justify-center items-center gap-2">
+                            Klaim Sekarang <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="bg-brand-card rounded-2xl p-1 border border-gray-800 hover:border-brand-gold transition-all duration-300 group hover:-translate-y-2 hover:shadow-[0_10px_30px_-10px_rgba(245,158,11,0.3)] cursor-pointer">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 h-48 rounded-xl flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-md z-10">-100%</div>
+                        <div class="text-6xl group-hover:scale-110 transition duration-500">🐲</div>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-xs text-brand-gold font-bold mb-1 tracking-wider">FISHIT</p>
+                        <h3 class="text-xl font-bold text-white mb-3">Ruby Gemstone Dragon</h3>
+                        <div class="flex flex-col mb-5">
+                            <span class="text-sm text-gray-500 line-through">Rp 450.000</span>
+                            <span class="text-3xl font-extrabold text-brand-gold">Rp 0</span>
+                        </div>
+                        <button onclick="openModal('Ruby Gemstone Dragon', 'fishit')" class="w-full bg-white/5 hover:bg-brand-gold text-white border border-gray-700 hover:border-brand-gold font-bold py-3 rounded-xl transition-all duration-300 flex justify-center items-center gap-2">
+                            Klaim Sekarang <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="bg-brand-card rounded-2xl p-1 border border-gray-800 hover:border-brand-gold transition-all duration-300 group hover:-translate-y-2 hover:shadow-[0_10px_30px_-10px_rgba(245,158,11,0.3)] cursor-pointer">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 h-48 rounded-xl flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-md z-10">-100%</div>
+                        <div class="text-6xl group-hover:scale-110 transition duration-500">🦕</div>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-xs text-brand-gold font-bold mb-1 tracking-wider">FISHIT</p>
+                        <h3 class="text-xl font-bold text-white mb-3">Loch Ness Monster Fishit</h3>
+                        <div class="flex flex-col mb-5">
+                            <span class="text-sm text-gray-500 line-through">Rp 200.000</span>
+                            <span class="text-3xl font-extrabold text-brand-gold">Rp 0</span>
+                        </div>
+                        <button onclick="openModal('Loch Ness Monster Fishit', 'fishit')" class="w-full bg-white/5 hover:bg-brand-gold text-white border border-gray-700 hover:border-brand-gold font-bold py-3 rounded-xl transition-all duration-300 flex justify-center items-center gap-2">
+                            Klaim Sekarang <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Invite / Referral Section -->
+        <div id="invite" class="w-full pt-20 pb-10">
+            <div class="bg-gradient-to-br from-brand-card to-[#0d1726] rounded-3xl p-8 md:p-12 border border-brand-green/30 shadow-[0_0_40px_-10px_rgba(16,185,129,0.2)] relative overflow-hidden">
+                <!-- Background Decoration -->
+                <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-brand-gold/20 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-40 h-40 bg-brand-green/20 rounded-full blur-3xl"></div>
+                
+                <div class="relative z-10 flex flex-col lg:flex-row items-center gap-10">
+                    <div class="w-full lg:w-1/2 text-left">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/10 text-brand-gold font-bold text-xs mb-4 border border-brand-gold/20">
+                            <i data-lucide="gift" class="w-3 h-3"></i> Fitur Baru
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">Dapatkan <span class="text-brand-gold">10.000 Robux</span> Ekstra!</h2>
+                        <p class="text-gray-400 text-lg mb-6">Undang 5 temanmu untuk bergabung ke Vintrzy Store menggunakan link unik di bawah. Semakin banyak yang diundang, semakin banyak saldo Robux gratis untukmu!</p>
+                        
+                        <div class="bg-gray-900/50 p-4 rounded-xl border border-gray-700 mb-4">
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="text-gray-300 font-medium">Progres Undangan: <span class="text-brand-green font-bold" id="inviteCount">0</span>/5 Teman</span>
+                                <span class="text-brand-gold font-bold" id="invitePercent">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-2.5">
+                                <div class="bg-gradient-to-r from-brand-green to-emerald-400 h-2.5 rounded-full transition-all duration-1000" id="inviteBar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="w-full lg:w-1/2">
+                        <div class="bg-gray-900/80 backdrop-blur p-6 rounded-2xl border border-gray-700">
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Link Undangan Kamu</label>
+                            <div class="flex flex-col sm:flex-row gap-2 mb-4">
+                                <div class="relative flex-grow">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <i data-lucide="link" class="h-5 w-5 text-gray-500"></i>
+                                    </div>
+                                    <input type="text" id="inviteLink" readonly value="https://vintrzy.store/inv/XyZ89K" 
+                                        class="w-full pl-10 pr-4 py-3 bg-gray-800 border border-gray-600 rounded-xl text-brand-gold font-semibold focus:outline-none focus:border-brand-green transition-all">
+                                </div>
+                                <button onclick="copyInviteLink()" class="bg-brand-card hover:bg-gray-700 text-white border border-gray-600 px-6 py-3 sm:py-0 rounded-xl transition flex justify-center items-center gap-2 group whitespace-nowrap" title="Salin Link">
+                                    <i data-lucide="copy" class="w-5 h-5 group-hover:text-brand-green transition"></i> Salin
+                                </button>
+                            </div>
+                            <p class="text-xs text-center text-gray-500 mb-4">Atau bagikan langsung ke sosial media:</p>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button onclick="shareWhatsApp()" class="flex items-center justify-center gap-2 bg-[#25D366]/10 hover:bg-[#25D366]/20 text-[#25D366] border border-[#25D366]/30 py-2.5 rounded-lg font-bold transition">
+                                    <i data-lucide="message-circle" class="w-5 h-5"></i> WhatsApp
+                                </button>
+                                <button onclick="shareFacebook()" class="flex items-center justify-center gap-2 bg-[#1877F2]/10 hover:bg-[#1877F2]/20 text-[#1877F2] border border-[#1877F2]/30 py-2.5 rounded-lg font-bold transition">
+                                    <i data-lucide="facebook" class="w-5 h-5"></i> Facebook
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Komentar & Diskusi Section -->
+        <div id="komentar" class="w-full pt-10 pb-16">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-3xl font-bold text-white flex items-center gap-3">
+                    <i data-lucide="message-square-text" class="text-brand-green"></i> Komentar & Testimoni
+                </h2>
+                <div class="text-sm text-gray-400 bg-gray-900 px-4 py-2 rounded-full border border-gray-800">
+                    <span id="commentCount" class="text-brand-gold font-bold">128</span> Diskusi
+                </div>
+            </div>
+
+            <div class="bg-brand-card rounded-3xl p-6 md:p-8 border border-gray-800 shadow-xl relative overflow-hidden">
+                <!-- Decorative background elements -->
+                <div class="absolute -top-20 -right-20 w-64 h-64 bg-brand-green/5 rounded-full blur-3xl pointer-events-none"></div>
+
+                <!-- Form Komentar -->
+                <div class="relative mb-8 z-10">
+                    <!-- Overlay Kunci Komentar (Akan hilang setelah klaim) -->
+                    <div id="commentLockOverlay" class="absolute inset-0 z-20 bg-brand-card/80 backdrop-blur-sm flex flex-col items-center justify-center rounded-xl border border-gray-700 transition-all duration-500">
+                        <i data-lucide="lock" class="w-6 h-6 text-brand-gold mb-2"></i>
+                        <p class="text-white font-bold text-sm">Komentar Terkunci</p>
+                        <p class="text-xs text-gray-400 mt-1">Klaim minimal 1 item giveaway untuk membuka fitur ini.</p>
+                    </div>
+
+                    <form id="commentForm" onsubmit="submitComment(event)">
+                        <div class="flex flex-col md:flex-row gap-4">
+                            <div class="relative w-full md:w-1/3">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i data-lucide="user" class="h-4 w-4 text-gray-500"></i>
+                                </div>
+                                <input type="text" id="commentName" placeholder="Nama Panggilan" required maxlength="20" class="w-full pl-10 pr-4 py-3 bg-gray-900 border border-gray-700 rounded-xl text-white focus:outline-none focus:border-brand-green focus:ring-1 focus:ring-brand-green transition-all disabled:opacity-50">
+                            </div>
+                            <div class="relative w-full md:w-2/3">
+                                <input type="text" id="commentText" placeholder="Tulis testimoni atau komentarmu di sini..." required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-xl text-white focus:outline-none focus:border-brand-green focus:ring-1 focus:ring-brand-green transition-all disabled:opacity-50">
+                            </div>
+                            <button type="submit" class="bg-brand-green hover:bg-emerald-500 text-white font-bold py-3 px-6 rounded-xl transition flex justify-center items-center gap-2 whitespace-nowrap shadow-lg shadow-brand-green/20">
+                                Kirim <i data-lucide="send" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Daftar Komentar (Scrollable) -->
+                <div class="space-y-5 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar relative z-10" id="commentList">
+                    
+                    <!-- Dummy Comment 1 -->
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-white font-bold shrink-0 shadow-lg shadow-emerald-500/30">B</div>
+                        <div class="bg-gray-900/60 rounded-2xl p-4 border border-gray-800 flex-grow hover:border-brand-green/30 transition duration-300">
+                            <div class="flex items-center justify-between mb-1.5">
+                                <h4 class="text-white font-bold text-sm">BudiGaming99 <i data-lucide="badge-check" class="w-3.5 h-3.5 text-brand-green inline-block ml-0.5" fill="currentColor" fill-opacity="0.2"></i></h4>
+                                <span class="text-xs text-gray-500">2 menit yang lalu</span>
+                            </div>
+                            <p class="text-gray-300 text-sm leading-relaxed">Mantap min! Loch Ness Monster Fishit nya udah masuk ke akun fishit ane, makasih banyak event ramadhannya! Berkah selalu 🔥</p>
+                        </div>
+                    </div>
+
+                    <!-- Dummy Comment 2 -->
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-gold to-yellow-600 flex items-center justify-center text-white font-bold shrink-0 shadow-lg shadow-yellow-500/30">S</div>
+                        <div class="bg-gray-900/60 rounded-2xl p-4 border border-gray-800 flex-grow hover:border-brand-green/30 transition duration-300">
+                            <div class="flex items-center justify-between mb-1.5">
+                                <h4 class="text-white font-bold text-sm">Sarah_Cute12</h4>
+                                <span class="text-xs text-gray-500">15 menit yang lalu</span>
+                            </div>
+                            <p class="text-gray-300 text-sm leading-relaxed">Awalnya ragu ngira scam, eh ternyata beneran dong robuxnya nambah 800. Sukses terus Vintrzy Store! 💖</p>
+                        </div>
+                    </div>
+
+                    <!-- Dummy Comment 3 -->
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center text-white font-bold shrink-0 shadow-lg shadow-blue-500/30">R</div>
+                        <div class="bg-gray-900/60 rounded-2xl p-4 border border-gray-800 flex-grow hover:border-brand-green/30 transition duration-300">
+                            <div class="flex items-center justify-between mb-1.5">
+                                <h4 class="text-white font-bold text-sm">Rzx_Pro_Player <i data-lucide="badge-check" class="w-3.5 h-3.5 text-brand-green inline-block ml-0.5" fill="currentColor" fill-opacity="0.2"></i></h4>
+                                <span class="text-xs text-gray-500">1 jam yang lalu</span>
+                            </div>
+                            <p class="text-gray-300 text-sm leading-relaxed">Udah gabung grup WA nya, prosesnya cepet banget ga sampe 5 menit. Sering sering aja min ngadain giveaway ginian wkwwk</p>
+                        </div>
+                    </div>
+
+                    <!-- Dummy Comment 4 -->
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-fuchsia-600 flex items-center justify-center text-white font-bold shrink-0 shadow-lg shadow-purple-500/30">A</div>
+                        <div class="bg-gray-900/60 rounded-2xl p-4 border border-gray-800 flex-grow hover:border-brand-green/30 transition duration-300">
+                            <div class="flex items-center justify-between mb-1.5">
+                                <h4 class="text-white font-bold text-sm">Aldi_Mabar</h4>
+                                <span class="text-xs text-gray-500">2 jam yang lalu</span>
+                            </div>
+                            <p class="text-gray-300 text-sm leading-relaxed">Gila sih ruby gemstone dragon gratis, the best emang ini web.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 bg-brand-dark py-10 mt-10">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-400">
+            <div class="flex items-center gap-2">
+                <i data-lucide="moon-star" class="text-brand-green h-6 w-6"></i>
+                <span class="text-xl font-bold text-white">Vintrzy</span>
+            </div>
+            <p class="text-sm">© 2026 Vintrzy Store. Event Ramadhan Berkah.</p>
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-brand-green transition"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-brand-green transition"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-brand-green transition"><i data-lucide="message-circle" class="w-5 h-5"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL POP-UP CUSTOM -->
+    <div id="claimModal" class="fixed inset-0 z-[100] hidden items-center justify-center">
+        <!-- Overlay blur -->
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal()"></div>
+        
+        <!-- Modal Content -->
+        <div class="relative bg-brand-card border border-gray-700 w-full max-w-md rounded-2xl p-6 shadow-2xl transform scale-95 opacity-0 transition-all duration-300" id="modalBox">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            
+            <div class="text-center mb-6 pt-2">
+                <div class="w-16 h-16 bg-brand-green/20 rounded-full flex items-center justify-center mx-auto mb-4 text-brand-green">
+                    <i data-lucide="gift" class="w-8 h-8"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white">Klaim Item</h3>
+                <p class="text-brand-gold font-semibold mt-1" id="modalItemName">Nama Item</p>
+                <p class="text-sm text-gray-400 mt-2">Selesaikan syarat di bawah untuk memproses klaim item ini secara gratis.</p>
+            </div>
+
+            <div id="claimForm">
+                <!-- BOX VERIFIKASI SALURAN SAJA -->
+                <div class="mb-2 bg-brand-dark/60 p-5 rounded-xl border border-brand-green/40 shadow-inner text-center">
+                    <div class="flex flex-col items-center gap-3">
+                        <i data-lucide="shield-alert" class="text-brand-gold w-8 h-8"></i>
+                        <div>
+                            <p class="text-lg text-white font-bold mb-2">Langkah Terakhir!</p>
+                            <p class="text-sm text-gray-400 mb-5 leading-relaxed">Untuk menghindari bot, kamu <span class="text-white font-medium">wajib bergabung</span> ke saluran WhatsApp resmi Vintrzy.</p>
+                            <button onclick="processSingleClaim()" class="inline-flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-3.5 px-4 rounded-xl transition-all text-base shadow-lg shadow-[#25D366]/20 group">
+                                <i data-lucide="message-circle" class="w-5 h-5 group-hover:scale-110 transition-transform"></i> Gabung Saluran & Klaim
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-5 right-5 z-[110] transform translate-y-20 opacity-0 transition-all duration-500 bg-brand-card border-l-4 border-brand-green p-4 rounded-lg shadow-lg flex items-start gap-3 max-w-sm pointer-events-none">
+        <i data-lucide="check-circle-2" class="text-brand-green w-6 h-6 shrink-0 mt-0.5"></i>
+        <div>
+            <h4 class="text-white font-bold text-sm">Berhasil Diklaim!</h4>
+            <p class="text-gray-400 text-xs mt-1" id="toastMessage">Pesanan sedang diproses.</p>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // --- Navbar Scroll Effect ---
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-brand-card', 'shadow-lg');
+                nav.classList.remove('glass-panel');
+            } else {
+                nav.classList.remove('bg-brand-card', 'shadow-lg');
+                nav.classList.add('glass-panel');
+            }
+        });
+
+        // --- Countdown Timer ---
+        // Set target date to 3 days from now for demo purposes
+        const targetDate = new Date();
+        targetDate.setDate(targetDate.getDate() + 3);
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) return; // Stop if passed
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // --- Modal Logic ---
+        const modal = document.getElementById('claimModal');
+        const modalBox = document.getElementById('modalBox');
+        let currentItem = '';
+        let hasClaimedItem = false; // State untuk tracking apakah user sudah klaim giveaway
+
+        function openModal(itemName, type) {
+            currentItem = itemName;
+            document.getElementById('modalItemName').innerText = itemName;
+            
+            // Show modal
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            // Animate in
+            setTimeout(() => {
+                modalBox.classList.remove('scale-95', 'opacity-0');
+                modalBox.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            // Animate out
+            modalBox.classList.remove('scale-100', 'opacity-100');
+            modalBox.classList.add('scale-95', 'opacity-0');
+            
+            // Hide modal after animation
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300);
+        }
+
+        // --- Form Processing & Toast ---
+        function processSingleClaim() {
+            // 1. Buka link WhatsApp di tab baru
+            window.open('https://whatsapp.com/channel/0029VaFwXXX', '_blank');
+            
+            // 2. Tutup modal klaim
+            closeModal();
+            
+            // 3. Buka Kunci Fitur Komentar!
+            hasClaimedItem = true;
+            const lockOverlay = document.getElementById('commentLockOverlay');
+            if (lockOverlay) {
+                lockOverlay.classList.add('opacity-0', 'pointer-events-none');
+            }
+            
+            // 4. Tampilkan notifikasi sukses setelah delay singkat
+            setTimeout(() => {
+                showToast(`Item ${currentItem} berhasil diproses. Terima kasih sudah bergabung!`);
+            }, 1000);
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').innerHTML = message;
+            
+            // Show Toast
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            
+            // Hide after 5 seconds
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 5000);
+        }
+
+        // --- FITUR INVITE TEMAN ---
+        function copyInviteLink() {
+            const linkInput = document.getElementById('inviteLink');
+            
+            // Kompatibilitas copy untuk browser & mobile
+            linkInput.select();
+            linkInput.setSelectionRange(0, 99999); 
+            document.execCommand("copy");
+            
+            showToast("Link berhasil disalin! Bagikan ke temanmu sekarang.");
+            
+            // Simulasi dummy nambah progres teman setelah beberapa saat
+            setTimeout(simulateInviteProgress, 15000);
+        }
+
+        function shareWhatsApp() {
+            const text = "Dapatkan Robux & Item Roblox GRATIS dari Vintrzy Store spesial Ramadhan! Klaim sekarang pakai linkku ini: " + document.getElementById('inviteLink').value;
+            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
+        }
+
+        function shareFacebook() {
+            const url = document.getElementById('inviteLink').value;
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+        }
+
+        // Simulasi progres bar referral berjalan naik
+        function simulateInviteProgress() {
+            const countEl = document.getElementById('inviteCount');
+            let count = parseInt(countEl.innerText);
+            
+            if(count < 5) {
+                count++;
+                countEl.innerText = count;
+                const percent = (count / 5) * 100;
+                
+                document.getElementById('inviteBar').style.width = `${percent}%`;
+                document.getElementById('invitePercent').innerText = `${percent}%`;
+                
+                showToast(`🎉 Selamat! 1 Teman mendaftar dari link kamu. (${count}/5)`);
+            }
+        }
+
+        // --- FITUR KOMENTAR ---
+        function submitComment(e) {
+            e.preventDefault();
+            
+            // Proteksi ganda: cegah pengiriman jika belum klaim
+            if (!hasClaimedItem) {
+                showToast("Kamu harus klaim item giveaway terlebih dahulu!");
+                return;
+            }
+
+            const nameInput = document.getElementById('commentName');
+            const textInput = document.getElementById('commentText');
+            const list = document.getElementById('commentList');
+            const countEl = document.getElementById('commentCount');
+            
+            const name = nameInput.value.trim();
+            const text = textInput.value.trim();
+            
+            if(name && text) {
+                // Ambil huruf pertama untuk avatar
+                const initial = name.charAt(0).toUpperCase();
+                
+                // Buat elemen komentar baru
+                const newComment = document.createElement('div');
+                newComment.className = 'flex gap-4 animate-fade-in-down';
+                newComment.innerHTML = `
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-green to-emerald-600 flex items-center justify-center text-white font-bold shrink-0 shadow-lg shadow-brand-green/40">${initial}</div>
+                    <div class="bg-brand-green/10 rounded-2xl p-4 border border-brand-green/30 flex-grow shadow-[0_0_15px_-5px_rgba(16,185,129,0.15)]">
+                        <div class="flex items-center justify-between mb-1.5">
+                            <h4 class="text-white font-bold text-sm">${name} <span class="bg-brand-green text-brand-dark text-[10px] px-2 py-0.5 rounded-full ml-1.5 font-extrabold tracking-wider">NEW</span></h4>
+                            <span class="text-xs text-brand-green font-medium">Baru saja</span>
+                        </div>
+                        <p class="text-gray-200 text-sm leading-relaxed">${text}</p>
+                    </div>
+                `;
+                
+                // Tambahkan komentar ke urutan paling atas list
+                list.insertBefore(newComment, list.firstChild);
+                
+                // Tambah jumlah total komentar
+                let count = parseInt(countEl.innerText.replace(/,/g, ''));
+                countEl.innerText = (count + 1).toLocaleString('id-ID');
+                
+                // Reset kolom input text saja (nama biarkan agar user ga cape ngetik kalau komen lagi)
+                textInput.value = '';
+                
+                showToast("Komentarmu berhasil dikirim!");
+                
+                // Refresh ikon lucide untuk badge (kalau ada)
+                lucide.createIcons();
+            }
+        }
+    </script>
+</body>
+</html>
